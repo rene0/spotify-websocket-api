@@ -117,7 +117,7 @@ def command_uri(*args):
 
 
 def command_album(*args):
-    if args[0][0] == "" or current_playlist is None:
+    if len(*args) == 0 or args[0][0] == "" or current_playlist is None:
         return
 
     index = int(args[0][0])-1
