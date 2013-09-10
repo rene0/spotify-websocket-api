@@ -88,8 +88,10 @@ def command_list(*args):
         print "Playlists\n"
         index = 1
         for playlist in rootlist:
-            print " ["+str(index)+"] "+playlist.getName()
-            index += 1
+            name = playlist.getName()
+            if name != None:
+                print " ["+str(index)+"] "+name
+                index += 1
     else:
         try:
             if len(rootlist) >= int(args[0][0]):

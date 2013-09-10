@@ -244,6 +244,8 @@ class SpotifyPlaylist(SpotifyObject):
         uri_parts = self.uri.split(":")
         if len(uri_parts) == 4:
             return uri_parts[3]
+        elif len(uri_parts) == 3:
+            return None
         else:
             return uri_parts[4]
 
@@ -251,7 +253,7 @@ class SpotifyPlaylist(SpotifyObject):
         return self.uri
 
     def getName(self):
-        return "Starred" if self.getID() == "starred" else self.obj.attributes.name
+        return "Starred" if self.getID() == "starred" else (None if self.obj == False else self.obj.attributes.name)
 
     def rename(self, name):
         ret = self.spotify.api.rename_playlist(self.getURI(), name)
