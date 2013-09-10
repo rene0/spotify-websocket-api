@@ -120,6 +120,9 @@ def command_album(*args):
     if len(*args) == 0 or args[0][0] == "" or current_playlist is None:
         return
 
+    if type(args[0][0]) != int:
+        return
+
     index = int(args[0][0])-1
     if current_playlist.getNumTracks() < index:
         return
