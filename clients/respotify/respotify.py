@@ -288,7 +288,7 @@ if __name__ == '__main__':
     if spotify.logged_in():
         os.system("kill `pgrep -f respotify-helper` &> /dev/null")
         uri_resolver = subprocess.Popen([sys.executable, "respotify-helper.py",
-                                        args.username, args.password], env={"PATH": "%%PREFIX%%/bin"})
+                                        args.username, args.password])
         with client:
             client.connect(host="localhost", port="6600")
         Thread(target=heartbeat_handler).start()
